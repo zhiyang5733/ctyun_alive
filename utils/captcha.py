@@ -1,10 +1,7 @@
-import logging
 import time
 import ddddocr
 import requests
 from nb_log import get_logger
-
-
 logger = get_logger(__name__)
 
 

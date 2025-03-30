@@ -1,10 +1,8 @@
 import time
 from utils.browser import Browser
 from utils.captcha import get_captcha_code
-from nb_log import get_logger
 from config import ACCOUNT,PASSWORD,PROXY
-
-
+from nb_log import get_logger
 logger = get_logger(__name__)
 
 def login(page, account,proxy):

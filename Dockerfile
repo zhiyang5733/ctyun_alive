@@ -4,8 +4,6 @@ ENV LANG=C.UTF-8 TZ=Asia/Shanghai
 
 WORKDIR /app
 
-COPY ./requirements.txt requirements.txt
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-wqy-microhei \
     fonts-wqy-zenhei \

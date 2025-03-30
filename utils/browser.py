@@ -1,21 +1,8 @@
 
-import asyncio
-import json
-import logging
-import os
 import platform
-import signal
-import subprocess
-import time
-import platform
-import psutil
 from DrissionPage import Chromium, ChromiumOptions
-
-
-
-
-
-logger = logging.getLogger(__name__)
+from nb_log import get_logger
+logger = get_logger(__name__)
 
 
 class Browser(object):
