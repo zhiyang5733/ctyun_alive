@@ -1,0 +1,5 @@
+nb-log==13.2
+DrissionPage==4.1.0.18
+ddddocr==1.5.6
+python-dotenv==1.1.0
+pyvirtualdisplay==3.0

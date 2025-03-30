@@ -1,0 +1,9 @@
+services:
+  ctyun-alive:
+    image: ghcr.io/swcoffee/ctyun_alive:latest
+    container_name: ctyun-alive
+    restart: always
+    environment:
+      - ACCOUNT=13333333333
+      - PASSWORD=123456
+      - DOCKERMODE=true
