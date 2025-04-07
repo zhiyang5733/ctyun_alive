@@ -12,6 +12,7 @@ load_dotenv()
 ACCOUNT = os.getenv("ACCOUNT").strip()
 PASSWORD = os.getenv("PASSWORD").strip()
 PROXY =  os.getenv("PROXY",None)
+USER_AGENT = os.getenv("USER_AGENT",None)
 DOCKERMODE = string_to_bool(os.getenv("DOCKERMODE", "false"))
 if DOCKERMODE:
     from pyvirtualdisplay import Display

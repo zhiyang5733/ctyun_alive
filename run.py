@@ -1,7 +1,7 @@
 import time
 from utils.browser import Browser
 from utils.captcha import get_captcha_code
-from config import ACCOUNT,PASSWORD,PROXY
+from config import ACCOUNT,PASSWORD,PROXY,USER_AGENT
 from nb_log import get_logger
 logger = get_logger(__name__)
 
@@ -44,9 +44,10 @@ def main():
     account = ACCOUNT
     password = PASSWORD
     proxy = PROXY
+    user_agent = USER_AGENT
 
 
-    browser = Browser(proxy_server=proxy)
+    browser = Browser(proxy_server=proxy,user_agent=user_agent)
     page = browser.get_page()
     page.get("https://pc.ctyun.cn")
 
