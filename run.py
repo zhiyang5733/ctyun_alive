@@ -63,11 +63,18 @@ def main():
 
 
 if __name__ == "__main__":
-    while True:
+    import schedule
+    
+    def job():
         try:
             main()
         except Exception as e:
             logger.exception(f"保活任务运行失败: {e}")
-        finally:
-            # 每50分钟运行一次
-            time.sleep(60*50)
+    
+    # 每50分钟运行一次
+    schedule.every(50).minutes.do(job)
+    # 立即运行一次
+    job()
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
