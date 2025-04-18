@@ -1,4 +1,5 @@
 
+import os
 import platform
 from DrissionPage import Chromium, ChromiumOptions
 from nb_log import get_logger
@@ -7,12 +8,17 @@ logger = get_logger(__name__)
 
 class Browser(object):
 
-    def __init__(self, user_agent=None, proxy_server=None):
+    def __init__(self, user_agent=None, proxy_server=None,data_path=None):
         browser_path = "/usr/bin/google-chrome"
         options = ChromiumOptions()
         options.set_paths(browser_path=browser_path)
-        ###
-        options.auto_port()
+        if data_path:
+            logger.info(f"使用指定浏览器数据文件夹:{data_path}")
+            options.set_user_data_path(data_path)
+            options.set_local_port(9222)
+        else:
+            logger.info("未指定浏览器数据文件夹，将自动使用临时文件夹")
+            options.auto_port()
         options.set_timeouts(base=1)
         
         arguments = [
