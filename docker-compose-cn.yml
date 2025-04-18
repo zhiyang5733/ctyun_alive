@@ -1,6 +1,6 @@
 services:
   ctyun-alive:
-    image: ghcr.io/swcoffee/ctyun_alive:latest
+    image: ghcr.nju.edu.cn/swcoffee/ctyun_alive:latest
     container_name: ctyun-alive
     restart: always
     environment:
