@@ -72,12 +72,16 @@ def main():
 if __name__ == "__main__":
     import schedule
     
-    def job():
+    def job(retry=3):
+        if retry <= 0:
+            logger.error("保活任务运行失败！")
+            return
+        logger.info(f"开始保活任务，剩余重试次数: {retry}")
         try:
             main()
         except Exception as e:
-            logger.exception(f"保活任务运行失败: {e}")
-    
+            logger.exception(f"保活任务运行失败: {e}，剩余重试次数: {retry}")
+            job(retry-1)
     # 每45分钟运行一次
     schedule.every(45).minutes.do(job)
     # 立即运行一次
