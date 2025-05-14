@@ -2,7 +2,7 @@ import os
 import time
 from utils.browser import Browser
 from utils.captcha import get_captcha_code
-from config import ACCOUNT,PASSWORD,PROXY,USER_AGENT
+from config import ACCOUNT, ALIVE_SECOND, INTERVAL_MINUTE,PASSWORD,PROXY,USER_AGENT
 from nb_log import get_logger
 logger = get_logger(__name__)
 
@@ -12,13 +12,13 @@ def key_alive(page):
     if page.ele(".desktop-main-entry", timeout=10):
         logger.info("打开云电脑界面成功！")
         page.ele(".desktop-main-entry").click()
-        page.wait(30)
+        page.wait(ALIVE_SECOND)
         logger.info("保活成功！")
         return True
     else:
         logger.error("打开云电脑界面失败！")
         return False
-    
+
 def login(page, account,proxy):
     if page.ele(".code", timeout=10):
         logger.info("检测到验证码！")
@@ -71,7 +71,7 @@ def main():
 
 if __name__ == "__main__":
     import schedule
-    
+
     def job(retry=3):
         if retry <= 0:
             logger.error("保活任务运行失败！")
@@ -83,7 +83,7 @@ if __name__ == "__main__":
             logger.exception(f"保活任务运行失败: {e}，剩余重试次数: {retry}")
             job(retry-1)
     # 每45分钟运行一次
-    schedule.every(45).minutes.do(job)
+    schedule.every(INTERVAL_MINUTE).minutes.do(job)
     # 立即运行一次
     job()
     while True:

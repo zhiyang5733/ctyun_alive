@@ -7,5 +7,7 @@ services:
       - ACCOUNT=13333333333
       - PASSWORD=123456
       - DOCKERMODE=true
+      - INTERVAL_MINUTE=45
+      - ALIVE_SECOND=100
     volumes:
       - ./data:/app/data
