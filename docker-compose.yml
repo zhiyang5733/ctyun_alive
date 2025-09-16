@@ -4,8 +4,8 @@ services:
     container_name: ctyun-alive
     restart: always
     environment:
-      - ACCOUNT=13333333333
-      - PASSWORD=123456
+      - ACCOUNT=15326906619
+      - PASSWORD=Aa5733553.
       - DOCKERMODE=true
       - INTERVAL_MINUTE=45
       - ALIVE_SECOND=100
